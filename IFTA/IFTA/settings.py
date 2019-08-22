@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'Convert.apps.ConvertConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -80,7 +81,6 @@ WSGI_APPLICATION = 'IFTA.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'my_polls',
         'OPTIONS': {
             'read_default_file': os.path.join(BASE_DIR, 'secret/my.cnf'),
         },
