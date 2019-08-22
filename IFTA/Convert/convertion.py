@@ -84,7 +84,7 @@ def EFS_to_KT_convert(csv_file):
 	
 	if received_data and len(received_data) > 0:
 		response = HttpResponse(content_type='text/csv')
-		response['Content-Disposition'] = 'attachment; filename=%s' % converted_file_name
+		response['Content-Disposition'] = 'attachment; filename=%s.csv' % converted_file_name
 
 		writer = csv.writer(response)
 		converted_data = __convert(received_data)

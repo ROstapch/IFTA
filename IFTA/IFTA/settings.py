@@ -27,15 +27,17 @@ KEYS = ast.literal_eval(SECRETDATA)
 SECRET_KEY = KEYS.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["192.168.0.112"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'Core.apps.CoreConfig',
     'Convert.apps.ConvertConfig',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
