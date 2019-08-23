@@ -27,9 +27,9 @@ KEYS = ast.literal_eval(SECRETDATA)
 SECRET_KEY = KEYS.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.0.112"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ["192.168.0.112"]
 INSTALLED_APPS = [
     'Core.apps.CoreConfig',
     'Convert.apps.ConvertConfig',
+    'Reporting.apps.ReportingConfig',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -127,3 +128,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
