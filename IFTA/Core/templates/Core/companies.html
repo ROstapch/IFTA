@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	{% load static %}
+
+		<link rel="stylesheet" type="text/css" href="{% static 'Core/style.css' %}">
+
+        <title>Companies</title>
+    </head>
+
+    <body>
+        {% if companies %}
+            <ul>
+                {% for comp in companies %}
+                <li>{{ comp.company_api_key }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no companies to list.</strong>
+        {% endif %}
+    </body>
+</html>
