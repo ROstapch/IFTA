@@ -4,7 +4,11 @@
 	<title>
 		IFTA application
 	</title>
-	<a href="{% url 'Core:home'%}">Home</a>
+	{% if user.is_authenticated %}
+		<p>Welcome, {{ user.username }}. Log out(link)</p>
+	{% else %}
+		<p>Log in(link)</p>
+	{% endif %}
 </head>
 <body>
 	<p>Here is the <a href="{% url 'Convert:upload_csv'%}">link</a> to csv file convertion:</p>

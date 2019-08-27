@@ -2,21 +2,26 @@
 <html>
     <head>
     	{% load static %}
-
 		<link rel="stylesheet" type="text/css" href="{% static 'Core/style.css' %}">
-
         <title>Companies</title>
+        <a href="{% url 'Core:home'%}">Home</a>
     </head>
 
     <body>
         {% if companies %}
             <ul>
-                {% for comp in companies %}
-                <li>{{ comp.company_api_key }}</li>
+                {% for comp  in companies %}
+                    <li>{{ comp }} : {{comp.units}} truck(s)</li>
                 {% endfor %}
             </ul>
         {% else %}
             <strong>There are no companies to list.</strong>
         {% endif %}
+
+
+        {% if units_amount %}
+            <p>{{ amount_of_units }}</p>
+        {% endif %}
+
     </body>
 </html>
