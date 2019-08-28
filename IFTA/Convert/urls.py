@@ -4,5 +4,5 @@ from . import views
 
 app_name = 'Convert'
 urlpatterns = [
-	path('csv', views.upload_csv, name = 'upload_csv'),
+	path('csv/', views.upload_csv, name = 'upload_csv'),
 ]

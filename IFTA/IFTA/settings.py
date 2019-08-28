@@ -35,9 +35,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'Core.apps.CoreConfig',
-    'Convert.apps.ConvertConfig',
-    'Reporting.apps.ReportingConfig',
+    'Accounts',
+    'Core',
+    'Convert',
+    'Reporting',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -128,6 +129,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+LOGIN_REDIRECT_URL = 'Accounts:account'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
