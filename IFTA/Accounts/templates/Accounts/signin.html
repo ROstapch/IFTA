@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+	<title>Sign in</title>
+	{% load static %}
+{% endblock  %}
+
+
+
+{% block body %}
+
+	{% if user.is_authenticated %}
+		<p>You are already loged in as {{ user.username }}</p>
+		<p>Want to <a href="{% url 'Accounts:signout'%}">sign out</a>?</p>
+	{% else %}
+
+		<form method="POST" class="post-form">{% csrf_token %}
+	        {{ form.as_p }}
+	        <button type="submit" class="save btn btn-default">Sign in</button>
+	    </form>
+
+		{% if error_message %}
+			<p> {{ error_message }}</p>
+		{% endif %}
+	
+	{% endif %}
+
+
+{% endblock  %}

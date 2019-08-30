@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<a href="{% url 'Accounts:home'%}">Home</a>
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'Accounts/dropdown_menu.css' %}">
+
+
+	<div class="navbar">
+		<div class="dropdown">
+
+		{% if user.is_authenticated %}
+		<button class="dropbtn">{{ user.username }} 
+			<i class="fa fa-caret-down"></i>
+		</button>
+			<div class="dropdown-content">
+					<a href="{% url 'Accounts:account'%}">My account</a>
+					<a href="{% url 'Accounts:signout'%}">Sign out</a>
+			</div>
+		{% else %}
+			<a href="{% url 'Accounts:signin'%}">Sign in</a>
+		{% endif %}
+		</div> 
+		<a href="{% url 'Accounts:home'%}">Home</a>
+	</div>
+
 	{% block head %}
-	<title></title>
 	{% endblock %}
+
 </head>
 <body>
-	{% block body %}
 
+	{% block body %}
 	{% endblock %}
+	<footer>
+		IFTA application
+	</footer>
 </body>
 </html>

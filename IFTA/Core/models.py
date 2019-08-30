@@ -1,10 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 
 class Company(models.Model):
 	company_id = models.IntegerField(unique=True, editable=False, null=True)
 	company_name = models.CharField(max_length=60)
+	company_address = models.CharField(max_length=250, null=True)
 
 
 	def __str__(self):
@@ -25,13 +27,12 @@ class Unit(models.Model):
 	unit_number = models.IntegerField(unique=True, primary_key=True, help_text='Internal number of the truck in the company')	#unit number is set as primary key
 	unit_company = models.ForeignKey('Company', on_delete = models.CASCADE, help_text='Links to the company, unit belongs to')
 
-	unit_vin = models.CharField(max_length=60, help_text='Vin number of the unit')
-	unit_plate = models.CharField(max_length=10, help_text='Plate numer of the unit')
 	unit_eld = models.CharField(max_length=30, help_text='Id of the ELD device installed on the unit')
 
 	unit_active = models.BooleanField(help_text='Indicates if the unit is used by the company')
 	unit_ifta = models.BooleanField(help_text='Indicates if the unit is IFTA convenient')
 
+	unit_staff = models.ForeignKey(User, null = True, on_delete=models.DO_NOTHING)
 
 	def __str__(self):
 		return str(self.unit_number)

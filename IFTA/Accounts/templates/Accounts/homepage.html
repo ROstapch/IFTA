@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>
-		IFTA application
-	</title>
-	{% if user.is_authenticated %}
-		<p>Welcome, {{ user.username }}. Log out(link)</p>
-	{% else %}
-		<p>Log in(link)</p>
-	{% endif %}
-</head>
-<body>
-	<p><a href="{% url 'Convert:upload_csv'%}">Convert</a> csv file</p>
-	
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block head %}
+<title>
+	IFTA application
+</title>
+{% endblock %}
+
+{% block body %}
+	<p><a href="{% url 'Convert:upload_csv'%}">Convert file</a> csv file</p>
+{% endblock %}

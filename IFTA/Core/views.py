@@ -1,12 +1,16 @@
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
 from django.core.exceptions import PermissionDenied
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 from .models import *
 
 
 
 def companies(request):
+	if not request.user.is_authenticated:
+		return HttpResponseRedirect(reverse("Accounts:login"))
 	if not request.user.has_perm('Core.view_company'):
 		raise PermissionDenied()
 	context = RequestContext(request)
