@@ -27,12 +27,13 @@ class Unit(models.Model):
 	unit_number = models.IntegerField(unique=True, primary_key=True, help_text='Internal number of the truck in the company')	#unit number is set as primary key
 	unit_company = models.ForeignKey('Company', on_delete = models.CASCADE, help_text='Links to the company, unit belongs to')
 
-	unit_eld = models.CharField(max_length=30, help_text='Id of the ELD device installed on the unit')
+	unit_eld = models.CharField(max_length=30, null = True, help_text='Id of the ELD device installed on the unit')
 
 	unit_active = models.BooleanField(help_text='Indicates if the unit is used by the company')
-	unit_ifta = models.BooleanField(help_text='Indicates if the unit is IFTA convenient')
+	unit_ifta = models.BooleanField(null=True, help_text='Indicates if the unit is IFTA convenient')
 
 	unit_staff = models.ForeignKey(User, null = True, on_delete=models.DO_NOTHING)
+	unit_type = models.CharField(max_length=30, help_text='Group of units') 	#compnay.LH, comp.Local, comp.Regional, owner, owner lease, owner rent
 
 	def __str__(self):
 		return str(self.unit_number)
@@ -46,9 +47,9 @@ class Driver(models.Model):
 
 	driver_name = models.CharField(max_length=20, help_text='Name of the driver')
 	driver_lastname = models.CharField(max_length=20, help_text='Last name of the driver')
-	driver_phone = models.CharField(max_length=20, help_text="Driver's phone number")
+	driver_phone = models.CharField(max_length=20, null=True, help_text="Driver's phone number")
 
-	driver_active = models.BooleanField(help_text='Indicates if the driver is working at the company')
+	driver_status = models.CharField(max_length=15, default="active", help_text='Indicates if the driver is active or deactivated')	#active, deactivated
 
 
 	def __str__(self):

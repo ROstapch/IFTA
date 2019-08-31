@@ -3,7 +3,8 @@ from ..models import *
 from .company_key import key_by_name
 
 class Company_Drivers():
-
+	#temp = Company_Drivers.Get_All_Drivers(comp = Company.objects.select_related().filter(company_name="Precise Transportation"))
+	#resp = temp.send_request()
 	class Get_All_Drivers(object):
 		url = None
 		role = None
@@ -55,9 +56,14 @@ class Company_Drivers():
 	'''
 	can be used only if the driver already exists, so we know what api key to use 
 	(can be used to update existing info per each unit)
-	'''
+	'''	
+	#temp = Company_Drivers.Get_Driver_Id(drivers_id = 512930, comp = Company.objects.select_related().filter(company_name="Precise Transportation"))
+	#resp = temp.send_request()
 	class Get_Driver_Id(object):
-
+		url = None
+		driver_id = None
+		metric = None
+		comp_name = None
 		def __init__(self, drivers_id = None, comp = None):
 			# URL of the request
 			self.url = "https://api.keeptruckin.com/v1/users/%s" % str(drivers_id)
@@ -68,7 +74,7 @@ class Company_Drivers():
 
 			#used to import correct api key
 			if comp:
-				self.comp_name = comp.company_name
+				self.comp_name = comp[0].company_name
 			else:
 				self.comp_name = comp
 
@@ -93,9 +99,17 @@ class Company_Drivers():
 
 
 class Company_Units():
-
+	#temp = Company_Units.Get_All_Units(comp = Company.objects.select_related().filter(company_name="Precise Transportation"))
+	#resp = temp.send_request()
 	class Get_All_Units(object):
-
+		url = None
+		driver_id = None
+		fuel_type= None
+		per_page = None
+		page_no = None
+		metric = None
+		total_pages = None
+		comp_name = None
 		def __init__(self, units_per_page = 50, page = 1, comp = None):
 			# URL of the request
 			self.url = "https://api.keeptruckin.com/v1/vehicles"
@@ -111,25 +125,25 @@ class Company_Units():
 			self.total_pages = 1
 			#used to import correct api key
 			if comp:
-				self.comp_name = comp.company_name
+				self.comp_name = comp[0].company_name
 			else:
 				self.comp_name = comp
 
 
-			def send_request(self):
-				responce = None
+		def send_request(self):
+			responce = None
 
-				if self.comp_name:
+			if self.comp_name:
 
-					key_header = key_by_name(self.comp_name)
-					if all(key_header.values()):
+				key_header = key_by_name(self.comp_name)
+				if all(key_header.values()):
 
-						request_params = {**self.driver_id, **self.fuel_type, **self.status, **self.per_page, **self.page_no}
-						request_header = {**key_header, **self.metric}
-						responce = requests.request(method = 'GET', url=self.url, params = request_params, headers = request_header, timeout = 10)
-						
-					key_header = None
-				return responce
+					request_params = {**self.driver_id, **self.fuel_type, **self.per_page, **self.page_no}
+					request_header = {**key_header, **self.metric}
+					responce = requests.request(method = 'GET', url=self.url, params = request_params, headers = request_header, timeout = 10)
+					
+				key_header = None
+			return responce
 
 
 
@@ -137,11 +151,16 @@ class Company_Units():
 	can be used only if the truck already exists, so we know what api key to use
 	(can be used to update existing info per each unit)
 	'''
+	#temp = Company_Units.Get_Unit_Id(units_id = 64801, comp = Company.objects.select_related().filter(company_name="Precise Transportation"))
+	#resp = temp.send_request()
 	class Get_Unit_Id(object):
-		
+		url = None
+		unit_id = None
+		metric = None
+		comp_name = None
 		def __init__(self, units_id = None, comp = None):
 			# URL of the request
-			self.url = "https://api.keeptruckin.com/v1/vehicles/" % str(units_id)
+			self.url = "https://api.keeptruckin.com/v1/vehicles/%s" % str(units_id)
 			# parameters of the request
 			self.unit_id = {"id" : units_id}
 			# headers of the request
@@ -149,25 +168,25 @@ class Company_Units():
 
 			#used to import correct api key
 			if comp:
-				self.comp_name = comp.company_name
+				self.comp_name = comp[0].company_name
 			else:
 				self.comp_name = comp
 
 
-			def send_request(self):
-				responce = None
+		def send_request(self):
+			responce = None
 
-				if self.comp_name:
+			if self.comp_name:
 
-					key_header = key_by_name(self.comp_name)
-					if all(key_header.values()):
+				key_header = key_by_name(self.comp_name)
+				if all(key_header.values()):
 
-						request_params = self.unit_id
-						request_header = {**key_header, **self.metric}
-						responce = requests.request(method = 'GET', url=self.url, params = request_params, headers = request_header, timeout = 10)
+					request_params = self.unit_id
+					request_header = {**key_header, **self.metric}
+					responce = requests.request(method = 'GET', url=self.url, params = request_params, headers = request_header, timeout = 10)
 
-					key_header = None
-				return responce
+				key_header = None
+			return responce
 
 
 
