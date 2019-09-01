@@ -20,7 +20,7 @@ class ParsedUser(object):
 
 
 class ParseJSON(object):
-
+	#users_list = ParseJSON.users(resp.text)
 	def users(response_text):
 		try:
 			data = json.loads(response_text)
@@ -36,12 +36,12 @@ class ParseJSON(object):
 		except Exception:
 			return None
 
-
+	#user_list = ParseJSON.user(resp.text)
 	def user(response_text):
 		try:
 			user_data = json.loads(response_text)
 			parsed_user = ParseJSON.parse_user(user_data)
-			return (parsed_user)
+			return ([parsed_user])
 		except Exception:
 			return None
 

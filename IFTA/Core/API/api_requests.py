@@ -3,7 +3,7 @@ from ..models import *
 from .company_key import key_by_name
 
 class Company_Drivers():
-	#temp = Company_Drivers.Get_All_Drivers(comp = Company.objects.select_related().filter(company_name="Precise Transportation"))
+	#temp = Company_Drivers.Get_All_Drivers(comp = Company.objects.select_related().filter(company_name="Name"))
 	#resp = temp.send_request()
 	class Get_All_Drivers(object):
 		url = None
@@ -37,7 +37,7 @@ class Company_Drivers():
 
 
 		def send_request(self):
-			responce = None
+			response = None
 
 			if self.comp_name:
 
@@ -46,18 +46,14 @@ class Company_Drivers():
 
 					request_params = {**self.role, **self.duty_status, **self.status, **self.per_page, **self.page_no}
 					request_header = {**key_header, **self.metric}
-					responce = requests.request(method = 'GET', url=self.url, params = request_params, headers = request_header, timeout = 10)
+					response = requests.request(method = 'GET', url=self.url, params = request_params, headers = request_header, timeout = 10)
 
 				key_header = None
-			return responce
+			return response
 
 
 
-	'''
-	can be used only if the driver already exists, so we know what api key to use 
-	(can be used to update existing info per each unit)
-	'''	
-	#temp = Company_Drivers.Get_Driver_Id(drivers_id = 512930, comp = Company.objects.select_related().filter(company_name="Precise Transportation"))
+	#temp = Company_Drivers.Get_Driver_Id(drivers_id = 512930, comp = Company.objects.select_related().filter(company_name="Name"))
 	#resp = temp.send_request()
 	class Get_Driver_Id(object):
 		url = None
@@ -80,7 +76,7 @@ class Company_Drivers():
 
 
 		def send_request(self):
-			responce = None
+			response = None
 
 			if self.comp_name:
 
@@ -89,17 +85,17 @@ class Company_Drivers():
 
 					request_params = self.driver_id
 					request_header = {**key_header, **self.metric}
-					responce = requests.request(method = 'GET', url=self.url, params = request_params, headers = request_header, timeout = 10)
+					response = requests.request(method = 'GET', url=self.url, params = request_params, headers = request_header, timeout = 10)
 
 				key_header = None
-			return responce
+			return response
 
 
 
 
 
 class Company_Units():
-	#temp = Company_Units.Get_All_Units(comp = Company.objects.select_related().filter(company_name="Precise Transportation"))
+	#temp = Company_Units.Get_All_Units(comp = Company.objects.select_related().filter(company_name="Name"))
 	#resp = temp.send_request()
 	class Get_All_Units(object):
 		url = None
@@ -131,7 +127,7 @@ class Company_Units():
 
 
 		def send_request(self):
-			responce = None
+			response = None
 
 			if self.comp_name:
 
@@ -140,18 +136,14 @@ class Company_Units():
 
 					request_params = {**self.driver_id, **self.fuel_type, **self.per_page, **self.page_no}
 					request_header = {**key_header, **self.metric}
-					responce = requests.request(method = 'GET', url=self.url, params = request_params, headers = request_header, timeout = 10)
+					response = requests.request(method = 'GET', url=self.url, params = request_params, headers = request_header, timeout = 10)
 					
 				key_header = None
-			return responce
+			return response
 
 
 
-	'''
-	can be used only if the truck already exists, so we know what api key to use
-	(can be used to update existing info per each unit)
-	'''
-	#temp = Company_Units.Get_Unit_Id(units_id = 64801, comp = Company.objects.select_related().filter(company_name="Precise Transportation"))
+	#temp = Company_Units.Get_Unit_Id(units_id = 64801, comp = Company.objects.select_related().filter(company_name="Name"))
 	#resp = temp.send_request()
 	class Get_Unit_Id(object):
 		url = None
@@ -174,7 +166,7 @@ class Company_Units():
 
 
 		def send_request(self):
-			responce = None
+			response = None
 
 			if self.comp_name:
 
@@ -183,10 +175,10 @@ class Company_Units():
 
 					request_params = self.unit_id
 					request_header = {**key_header, **self.metric}
-					responce = requests.request(method = 'GET', url=self.url, params = request_params, headers = request_header, timeout = 10)
+					response = requests.request(method = 'GET', url=self.url, params = request_params, headers = request_header, timeout = 10)
 
 				key_header = None
-			return responce
+			return response
 
 
 

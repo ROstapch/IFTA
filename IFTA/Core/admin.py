@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Company, Unit
+from .models import *
 
 
 
@@ -16,5 +16,11 @@ class UnitAdmin(admin.ModelAdmin):
 	list_display = ('unit_number', 'company')
 
 
+class DriverAdmin(admin.ModelAdmin):
+	list_display = ('full_name', 'driver_phone', 'driver_status')
+
+
+
 admin.site.register(Company, CompanyAdmin)
 admin.site.register(Unit, UnitAdmin)
+admin.site.register(Driver, DriverAdmin)
