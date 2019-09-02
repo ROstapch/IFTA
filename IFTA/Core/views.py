@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .API.api_requests import Company_Drivers, Company_Units
 from .API.parse_response import ParseJSON
-from .API.save_parsed_data import save_drivers
+from .API.save_parsed_data import save_drivers, save_units
 
 from .models import *
 
@@ -28,8 +28,6 @@ def companies(request):
 			if resp:
 				if resp.status_code == 200:
 					user_list = ParseJSON.users(resp.text)
-					for user in user_list:
-						print(user)
 					save_drivers(user_list)
 				else:
 					print(resp.status_code)
@@ -40,6 +38,8 @@ def companies(request):
 	else:
 		print("No companies available")
 	'''
+
+	'''
 	if Company.objects.all():
 		company = Company.objects.filter(company_name="Precise Transportation")
 		if company:
@@ -49,8 +49,7 @@ def companies(request):
 			if resp:
 				if resp.status_code == 200:
 					unit_list = ParseJSON.units(resp.text)
-					for unit in unit_list:
-						print(unit)
+					save_units(unit_list)
 				else:
 					print(resp.status_code)
 			else:
@@ -59,6 +58,6 @@ def companies(request):
 			print("No company with such name")
 	else:
 		print("No companies available")
-	
+	'''
 
 	return render_to_response('Core/companies.html', context_data, context)

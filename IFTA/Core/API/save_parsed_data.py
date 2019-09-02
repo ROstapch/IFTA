@@ -22,3 +22,21 @@ def save_drivers(drivers_list):
 			pass
 
 
+def save_units(unit_list):
+	for unit in unit_list:
+		try:
+			comp = Company.objects.get(company_id = unit.unit_company)
+			unit_info = {
+				"unit_company": comp,
+				"unit_eld" : unit.unit_eld,
+				"unit_active" : unit.unit_status,
+				"unit_ifta" : unit.unit_ifta}
+			obj, created = Unit.objects.update_or_create(unit_id = unit.unit_id, unit_number = unit.unit_number, defaults = unit_info)
+			if created:
+				print(str(obj) + "  - created")
+			else:
+				print(str(obj) + "  - edited")
+		except Exception:
+			pass
+
+

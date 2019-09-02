@@ -13,7 +13,7 @@ class CompanyAdmin(admin.ModelAdmin):
 
 
 class UnitAdmin(admin.ModelAdmin):
-	list_display = ('unit_number', 'company')
+	list_display = ('unit_number', 'company', 'unit_active')
 
 
 class DriverAdmin(admin.ModelAdmin):

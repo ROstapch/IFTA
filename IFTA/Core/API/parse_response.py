@@ -26,7 +26,7 @@ class ParsedUnit(object):
 		self.unit_number = unit_number
 		self.unit_company = unit_company_id
 		self.unit_eld = unit_eld
-		self.unit_status = unit_active
+		self.unit_status = True if unit_active == 'active' else False
 		self.unit_ifta = unit_ifta
 
 	def __str__(self):
