@@ -8,8 +8,8 @@ class Fuel_Types():
 	meth = 'Methanol'
 	bio = 'Biodiesel'
 	fuel_choice = [
-		(dsl, 'diesel'),
-		(gas, 'gasoline')
+		(dsl, 'Diesel'),
+		(gas, 'Gasoline')
 	]
 
 
@@ -26,8 +26,8 @@ class Volume_Measures():
 	gal = 'gal'
 	ltr = 'ltr'
 	volume_choice = [
-		(gal,'gallons'),
-		(ltr,'liters')
+		(gal,'Gallons'),
+		(ltr,'Liters')
 	]
 
 
@@ -35,8 +35,8 @@ class Distance_Measures():
 	km = 'km'
 	mi = 'mi'
 	distance_choice = [
-		(km,'kilometers'),
-		(mi,'miles')
+		(km,'Kilometers'),
+		(mi,'Miles')
 	]
 
 
@@ -44,8 +44,8 @@ class Vehicle_Types():
 	ifta_units = 'ifta'
 	all_units = 'all'
 	vehicle_choice = [
-		(ifta_units,'ifta'),
-		(all_units,'all')
+		(ifta_units,'IFTA'),
+		(all_units,'All')
 	]
 
 class Jurisdiction_list():

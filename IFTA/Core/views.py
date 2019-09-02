@@ -40,7 +40,25 @@ def companies(request):
 	else:
 		print("No companies available")
 	'''
-
+	if Company.objects.all():
+		company = Company.objects.filter(company_name="Precise Transportation")
+		if company:
+			#temp = Company_Units.Get_Unit_Id(units_id = 64801, comp = company)
+			temp = Company_Units.Get_All_Units(comp = company)
+			resp = temp.send_request()
+			if resp:
+				if resp.status_code == 200:
+					unit_list = ParseJSON.units(resp.text)
+					for unit in unit_list:
+						print(unit)
+				else:
+					print(resp.status_code)
+			else:
+				print("Errors with request")
+		else:
+			print("No company with such name")
+	else:
+		print("No companies available")
 	
 
 	return render_to_response('Core/companies.html', context_data, context)

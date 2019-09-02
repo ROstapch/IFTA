@@ -19,6 +19,31 @@ class ParsedUser(object):
 		"status" : self.user_status}
 
 
+
+class ParsedUnit(object):
+	def __init__(self, unit_id = None, unit_number = None, unit_company_id = None, unit_eld = None, unit_active = 'deactivated', unit_ifta = True):
+		self.unit_id = unit_id
+		self.unit_number = unit_number
+		self.unit_company = unit_company_id
+		self.unit_eld = unit_eld
+		self.unit_status = unit_active
+		self.unit_ifta = unit_ifta
+
+	def __str__(self):
+		return str(self.unit_number)
+
+	def all(self):
+		return {"id" : self.unit_id,
+		"number" : self.unit_number,
+		"company id" : self.unit_company,
+		"ELD id" : self.unit_eld,
+		"status" : self.unit_status,
+		"ifta" : self.unit_ifta}
+
+
+
+
+
 class ParseJSON(object):
 	#users_list = ParseJSON.users(resp.text)
 	def users(response_text):
@@ -70,8 +95,45 @@ class ParseJSON(object):
 
 
 	def units(response_text):
-		pass
+		try:
+			data = json.loads(response_text)
+			key_list = list(data.keys())
+
+			units_data = data.get(key_list[key_list.index('vehicles')])
+
+			units_tuple = []
+			for unit_data in units_data:
+				units_tuple.append(ParseJSON.parse_unit(unit_data))
+
+			return units_tuple
+		except Exception:
+			return None
 
 
 	def unit(response_text):
-		pass
+		try:
+			unit_data = json.loads(response_text)
+			parsed_unit = ParseJSON.parse_unit(unit_data)
+
+			return ([parsed_unit])
+		except Exception:
+			return None
+
+
+	def parse_unit(units_data):
+		if 'vehicle' in units_data.keys():
+			unit_data = units_data.get('vehicle')
+			
+			unit_id = unit_data.get('id') if 'id' in unit_data.keys() else None
+			unit_number = unit_data.get('number') if 'number' in unit_data.keys() else None
+			unit_company_id = unit_data.get('company_id') if 'company_id' in unit_data.keys() else None
+			if 'eld_device' in unit_data.keys():
+				unit_eld = unit_data.get('eld_device').get('identifier') if unit_data.get('eld_device') and 'identifier' in unit_data.get('eld_device') else None
+			unit_active = unit_data.get('status') if 'status' in unit_data.keys() else 'deactivated'
+			unit_ifta = unit_data.get('ifta') if 'ifta' in unit_data.keys() else True
+
+			parsed_unit = ParsedUnit(unit_id, unit_number, unit_company_id, unit_eld, unit_active, unit_ifta)
+
+			return(parsed_unit)
+		else:
+			return None
