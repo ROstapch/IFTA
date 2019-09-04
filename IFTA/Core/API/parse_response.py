@@ -1,4 +1,5 @@
 import json
+import math
 
 class ParsedUser(object):
 	def __init__(self, user_id = None, first_name = 'Name', last_name = 'Last name', phone = None, status = 'active'):
@@ -45,6 +46,19 @@ class ParsedUnit(object):
 
 
 class ParseJSON(object):
+
+	def total_pages(response_text):
+		try:
+			data = json.loads(response_text)
+			key_list = list(data.keys())
+
+			pages_data = data.get(key_list[key_list.index('pagination')])
+			total_pages = math.ceil(pages_data.get('total') / pages_data.get('per_page'))
+			return total_pages
+		except Exception:
+			return 1
+
+
 	#users_list = ParseJSON.users(resp.text)
 	def users(response_text):
 		try:

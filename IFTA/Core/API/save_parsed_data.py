@@ -1,10 +1,6 @@
 from ..models import *
 
 
-#comp = Company.objects.get(company_name = "Precise Transportation")
-#
-#unit, created = Unit.objects.update_or_create(unit_id = 777, unit_number = 666, unit_company = comp,
-#	defaults = {"unit_eld": "eld", "unit_active" : True, "unit_ifta" : None, "unit_staff" : None, "unit_type" : None})
 def save_drivers(drivers_list):
 	for driver in drivers_list:
 		try:
