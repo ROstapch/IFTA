@@ -2,11 +2,12 @@ import json
 import math
 
 class ParsedUser(object):
-	def __init__(self, user_id = None, first_name = 'Name', last_name = 'Last name', phone = None, status = 'active'):
+	def __init__(self, user_id = None, first_name = 'Name', last_name = 'Last name', phone = None, email = None, status = True):#'active'):
 		self.user_id = user_id
 		self.user_first_name = first_name
 		self.user_last_name = last_name
 		self.user_phone = phone
+		self.user_email = email
 		self.user_status = status
 
 	def __str__(self):
@@ -95,9 +96,14 @@ class ParseJSON(object):
 			user_first_name = user_data.get('first_name') if 'first_name' in user_data.keys() else 'Name'
 			user_last_name = user_data.get('last_name') if 'last_name' in user_data.keys() else 'Last name'
 			user_phone = user_data.get('phone') if 'phone' in user_data.keys() else None
-			user_is_active = user_data.get('status') if 'status' in user_data.keys() else 'active'
+			user_email = user_data.get('email') if 'email' in user_data.keys() else None
+			if 'status' in user_data.keys() and 'active' == user_data.get('status'):
+				user_is_active = True
+			else:
+				user_is_active = False
 
-			parsed_user = ParsedUser(user_id, user_first_name, user_last_name, user_phone, user_is_active)
+
+			parsed_user = ParsedUser(user_id, user_first_name, user_last_name, user_phone, user_email, user_is_active)
 
 			return(parsed_user)
 		else:

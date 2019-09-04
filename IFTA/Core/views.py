@@ -18,4 +18,6 @@ def companies(request):
 	company_list = Company.objects.order_by('company_name')
 	context_data = {'companies': company_list}
 
+	UpdateData.update_all()
+
 	return render_to_response('Core/companies.html', context_data, context)

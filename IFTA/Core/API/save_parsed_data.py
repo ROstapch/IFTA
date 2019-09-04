@@ -8,6 +8,7 @@ def save_drivers(drivers_list):
 				"driver_name": driver.user_first_name,
 				"driver_lastname" : driver.user_last_name,
 				"driver_phone" : driver.user_phone,
+				"driver_email" : driver.user_email,
 				"driver_status" : driver.user_status}
 			obj, created = Driver.objects.update_or_create(driver_id = driver.user_id, defaults = driver_info)
 			if created:
