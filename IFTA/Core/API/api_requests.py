@@ -1,6 +1,6 @@
 import requests
-from ..models import *
-from .company_key import key_by_name
+from Core.models import *
+from Core.API.company_key import key_by_name
 
 class Company_Drivers():
 	#temp = Company_Drivers.Get_All_Drivers(comp = Company.objects.select_related().filter(company_name="Name"))

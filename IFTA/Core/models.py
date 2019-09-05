@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from .processing.choices import *
+from Core.processing.choices import *
 
 
 
@@ -8,6 +8,7 @@ class Company(models.Model):
 	company_id = models.IntegerField(unique=True, editable=False, null=True)
 	company_name = models.CharField(max_length=60)
 	company_address = models.CharField(max_length=250, null=True, blank=True)
+	company_owner = models.CharField(max_length=250, null=True, blank=True)
 
 
 	def __str__(self):
@@ -36,7 +37,7 @@ class Unit(models.Model):
 	unit_active = models.BooleanField(default=False, help_text='Indicates if the unit is used by the company')
 	unit_ifta = models.BooleanField(default=True, help_text='Indicates if the unit is IFTA convenient (gross weight 26000 pounds or more)')
 
-	unit_staff = models.ForeignKey(User,default=None, null = True, blank=True, on_delete=models.DO_NOTHING)
+	unit_staff = models.ForeignKey(User,default=None, null = True, blank=True, on_delete=models.PROTECT)
 	unit_type = models.CharField(default=None, max_length=30, null = True, blank=True, choices=Unit_Groups.unit_group_choice, help_text='Group of units')
 
 	def __str__(self):

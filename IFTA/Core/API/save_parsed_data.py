@@ -1,4 +1,4 @@
-from ..models import *
+from Core.models import *
 
 
 def save_drivers(drivers_list):

@@ -10,3 +10,4 @@ class Total_Report_Admin(admin.ModelAdmin):
 
 
 admin.site.register(Total_Report, Total_Report_Admin)
+admin.site.register(Daily_Location)

@@ -1,4 +1,20 @@
 
+class TimeZones_List():
+	utc_4 = 'Atlantic Time (Canada)'
+	utc_5 = 'Eastern Time (US & Canada)'
+	utc_6 = 'Central Time (US & Canada)'
+	utc_7 = 'Mountain Time (US & Canada)'
+	utc_8 = 'Pacific Time (US & Canada)'
+	utc_9 = 'Alaska'
+	tz_choice = [
+		(utc_4, 'Atlantic Time (-4h)'),
+		(utc_5, 'Eastern Time (-5h)'),
+		(utc_6, 'Central Time (-6h)'),
+		(utc_7, 'Mountain Time (-7h)'),
+		(utc_8, 'Pacific Time (-8h)'),
+		(utc_9, 'Alaska (-9h)'),
+	]
+
 
 class Fuel_Types():
 	dsl = 'Diesel'

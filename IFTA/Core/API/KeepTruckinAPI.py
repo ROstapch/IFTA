@@ -1,8 +1,8 @@
-from ..models import *
-from .api_requests import Company_Drivers, Company_Units
-from .parse_response import ParseJSON
-from .save_parsed_data import save_drivers, save_units
-from .company_key import companies as company_names
+from Core.models import *
+from Core.API.api_requests import Company_Drivers, Company_Units
+from Core.API.parse_response import ParseJSON
+from Core.API.save_parsed_data import save_drivers, save_units
+from Core.API.company_key import companies as company_names
 
 class UpdateData(object):
 

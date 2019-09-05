@@ -3,7 +3,7 @@ from django.template import RequestContext
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .API.KeepTruckinAPI import *
+from Core.API.KeepTruckinAPI import *
 
 from .models import *
 
@@ -17,7 +17,4 @@ def companies(request):
 	context = RequestContext(request)
 	company_list = Company.objects.order_by('company_name')
 	context_data = {'companies': company_list}
-
-	UpdateData.update_all()
-
 	return render_to_response('Core/companies.html', context_data, context)
