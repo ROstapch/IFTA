@@ -32,14 +32,6 @@ class Daily_Location(models.Model):
 
 
 
-	def create(self, unit, date, location, miles):
-		self.truck = unit
-		self.date = date
-		self.jurisdiction = location
-		self.miles = miles
-
-
-
 
 	def is_last(self):
 		try:

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Unit {% if unit %} {{unit}} {% endif %}</title>
+{% endblock %}
+
+{% block body %}
+	{% if unit %}
+        <h3>{{unit}}</h3>
+        <p> {{unit.unit_company}}</p>
+    {% endif %}
+{% endblock %}

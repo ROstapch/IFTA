@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Units</title>
+{% endblock %}
+
+
+{% block body %}
+	{% if units %}
+        <ul>
+            {% for unit  in units %}
+                <li><a href="{% url 'Core:unit_details' unit.unit_number %}"> {{unit.unit_number}}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>There are no units to list.</strong>
+    {% endif %}
+{% endblock %}

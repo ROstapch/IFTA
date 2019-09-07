@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .processing.convertion import EFS_to_KT_convert as convert_file
-from django.contrib.auth.decorators import login_required
 
 def upload_csv(request):
 	if "GET" == request.method:

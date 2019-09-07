@@ -1,28 +1,22 @@
-<!DOCTYPE html>
-<html>
-    <head>
-    	{% load static %}
-		<link rel="stylesheet" type="text/css" href="{% static 'Core/style.css' %}">
-        <title>Companies</title>
-        <a href="{% url 'Accounts:home'%}">Home</a>
-    </head>
+{% extends 'base.html' %}
 
-    <body>
-        {% if companies %}
-            <ul>
-                {% for comp  in companies %}
-                    <li>{{ comp }} : </li>
-                    <p>Total units: {{comp.units}}</p>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <strong>There are no companies to list.</strong>
-        {% endif %}
+{% block head %}
+    <title>
+        Companies
+    </title>
+{% endblock %}
 
-
-        {% if units_amount %}
-            <p>{{ amount_of_units }}</p>
-        {% endif %}
-
-    </body>
-</html>
+   
+{% block body %}
+    {% if companies %}
+        <ul>
+            {% for comp  in companies %}
+                <li>{{ comp }} : </li>
+                <p>Total units: {{comp.units}}</p>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>There are no companies to list.</strong>
+    {% endif %}
+    
+{% endblock %}
