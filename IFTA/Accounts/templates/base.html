@@ -17,11 +17,13 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'Accounts/global.css' %}">
 
 	<nav class="navbar navbar-dark bg-dark flex-md-nowrap p-0 navbar-fixed-top">
-		<ul class="w-100" type="text"></ul>
-		  <ul class="navbar-nav px-3">
-		    <li class="nav-item text-nowrap">
-		      <a class="nav-link" href="{% url 'Accounts:home'%}">Home</a>
-		    </li>
+		<ul class="w-100 navbar-nav px-3" type="text">
+      <li class="nav-item text-nowrap" style="padding-left: 20px;">IFTA</li>
+    </ul>
+	  <ul class="navbar-nav px-3">
+	    <li class="nav-item text-nowrap">
+	      <a class="nav-link" href="{% url 'Accounts:home'%}">Home</a>
+	    </li>
 		</ul>
 		{% if user.is_authenticated %}
 			<li class="nav-item dropdown contact-ul">
@@ -100,7 +102,7 @@
             </ul>
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>Saved reports</span>
+              <span class="big-text grey-text">Reports</span>
               <a class="d-flex align-items-center text-muted" href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
               </a>
@@ -136,14 +138,14 @@
 
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        	<div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor">
-        		<div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-        			<div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
-        		</div>
-        		<div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
-        			<div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
-        		</div>
-        	</div>
+          <div style="position: absolute; inset: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;" class="chartjs-size-monitor">
+            <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+              <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div>
+            </div>
+            <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+              <div style="position:absolute;width:200%;height:200%;left:0; top:0"></div>
+            </div>
+          </div>
 
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Dashboard</h1>
