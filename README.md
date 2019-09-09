@@ -1,6 +1,8 @@
 # IFTA
 
 To run this project create 2 files:
+
+*****************
 - secret/my.cnf
 *****************
 [client]
@@ -10,6 +12,7 @@ password = USER_PASSWORD
 default-character-set = utf8
 
 
+*****************
 - secret/mykeys.py
 *****************
 SECRET_KEY = "secretkey"
